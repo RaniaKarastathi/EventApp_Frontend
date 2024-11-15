@@ -35,36 +35,22 @@
         android:id="@+id/descriptionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="Discover Amazing Events!"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/citySearchView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textStyle="bold"/>
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/citySearchView"
-        android:layout_width="336dp"
-        android:layout_height="42dp"
-        android:background="@color/searchBar"
-        android:queryHint="Find Amazing Events"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
-
-    <TextView
-        android:id="@+id/popularEventsTv"
-        android:layout_width="wrap_content"
+    <AutoCompleteTextView
+        android:id="@+id/citySearchBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="16dp"
-        android:text="Popular Events"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/citySearchView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:hint="Type your city"
+        android:inputType="text"
+        android:padding="10dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawablePadding="10dp" />
+
+
 
 
 </LinearLayout>

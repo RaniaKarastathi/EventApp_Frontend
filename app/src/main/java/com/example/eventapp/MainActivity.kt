@@ -1,47 +1,49 @@
 package com.example.eventapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.SearchView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
-
-    // SearchView for city search
-    private lateinit var citySearchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize the SearchView
-        citySearchView = findViewById(R.id.citySearchView)
+        // List of cities
+        val cities = listOf(
+            "Athens", "Thessaloniki", "Patra", "Volos", "Hania",
+        )
 
-        // Listener for submitting the query from the SearchView
-        citySearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                // When the user submits the query, we proceed to the EventListActivity
-                if (!query.isNullOrEmpty()) {
-                    performSearch(query)
-                }
-                return true
-            }
+        // Find the AutoCompleteTextView in the layout
+        val citySearchBar = findViewById<AutoCompleteTextView>(R.id.citySearchBar)
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // Not implemented
-                return false
+        // Create an ArrayAdapter to populate the AutoCompleteTextView
+        val adapter = ArrayAdapter(this, R.layout.dropdown_item, R.id.dropdownItemText, cities)
+
+        // Set the adapter to the AutoCompleteTextView
+        citySearchBar.setAdapter(adapter)
+
+        // Show the dropdown list when the user taps the search bar
+        citySearchBar.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                citySearchBar.showDropDown() // Automatically show dropdown when focused
             }
-        })
+        }
+
+        // Handle item selection (if you want to do something when a city is selected)
+        citySearchBar.setOnItemClickListener { parent, view, position, id ->
+            val selectedCity = parent.getItemAtPosition(position) as String
+
+            // Pass the selected city to the next activity
+            val intent = Intent(this, EventsPage::class.java)
+            intent.putExtra("selectedCity", selectedCity) // Pass the selected city name
+            startActivity(intent)
+        }
     }
-    // Create the Intent for the EventListActivity
-    private fun performSearch(city: String) {
-        val intent = Intent(this, EventListActivity::class.java).apply {
-            putExtra("CITY", city)
-        }
 
-        // Start the EventListActivity
-        startActivity(intent)
-        }
 }
 
