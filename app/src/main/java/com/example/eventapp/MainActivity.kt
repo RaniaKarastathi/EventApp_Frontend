@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -42,6 +44,19 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, EventsPage::class.java)
             intent.putExtra("selectedCity", selectedCity) // Pass the selected city name
             startActivity(intent)
+        }
+
+        // Set up button click listeners for categories
+        val btnConcert = findViewById<Button>(R.id.concertBtn)
+        val btnTheater = findViewById<Button>(R.id.theaterBtn)
+
+
+        btnConcert.setOnClickListener {
+
+        }
+
+        btnTheater.setOnClickListener {
+
         }
     }
 
