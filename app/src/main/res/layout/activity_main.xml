@@ -32,103 +32,142 @@
         android:textSize="17sp"
         android:textStyle="bold" />
 
+    <!--     Search Bar-->
     <AutoCompleteTextView
         android:id="@+id/citySearchBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Type your city"
         android:height="48dp"
         android:inputType="text"
-        android:padding="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:drawable/editbox_background"
-        android:drawablePadding="10dp" />
+        android:padding="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_edittext_background"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="12dp" />
 
+
+    <!-- Categories Section -->
     <TextView
-        android:id="@+id/description2Tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="20dp"
         android:text="Find A Category You Like"
-        android:textSize="15sp"
+        android:textSize="17sp"
         android:textStyle="bold" />
-    <android.widget.ScrollView
+
+
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:layout_marginTop="10dp">
 
-        <!-- Buttons for Categories -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:gravity="center_horizontal">
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/concertBtn"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/btn_background"
-                android:padding="5dp"
-                android:text="Concert"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
+            <!-- Category Icon 1 -->
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="16dp">
 
-            <Button
-                android:id="@+id/theaterBtn"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:text="Theater"
-                android:textColor="@android:color/white"
-                android:background="@drawable/btn_background"
-                android:textSize="15sp"
-                android:padding="5dp"
-                android:layout_marginEnd="16dp"/>
-            <Button
-                android:id="@+id/festivalBtn"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/btn_background"
-                android:padding="5dp"
-                android:text="Festival"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
+                <ImageView
+                    android:id="@+id/musicIcon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_music"
+                    android:background="@drawable/btn_background"
+                    android:padding="10dp" />
 
-            <Button
-                android:id="@+id/sportsBtn"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:text="Sports"
-                android:textColor="@android:color/white"
-                android:background="@drawable/btn_background"
-                android:textSize="15sp"
-                android:padding="5dp"
-                android:layout_marginEnd="16dp"/>
-            <Button
-                android:id="@+id/artBtn"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/btn_background"
-                android:padding="5dp"
-                android:text="Art"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Music"
+                    android:textSize="14sp"
+                    android:gravity="center" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/FashionBtn"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:text="Fashion"
-                android:textColor="@android:color/white"
-                android:background="@drawable/btn_background"
-                android:textSize="15sp"
-                android:padding="5dp"
-                android:layout_marginEnd="16dp"/>
+            <!-- Category Icon 2 -->
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="16dp">
+
+                <ImageView
+                    android:id="@+id/theaterIcon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_theater"
+                    android:background="@drawable/btn_background"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Theater"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <!-- Category Icon 3 -->
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="16dp">
+
+                <ImageView
+                    android:id="@+id/artIcon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_art"
+                    android:background="@drawable/btn_background"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Art"
+                    android:textSize="14sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Category Icon 4 -->
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="16dp">
+
+                <ImageView
+                    android:id="@+id/sportsIcon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_sports"
+                    android:background="@drawable/btn_background"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Sports"
+                    android:textSize="14sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
         </LinearLayout>
-    </android.widget.ScrollView>
+    </HorizontalScrollView>
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -46,18 +47,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Set up button click listeners for categories
-        val btnConcert = findViewById<Button>(R.id.concertBtn)
-        val btnTheater = findViewById<Button>(R.id.theaterBtn)
-
-
-        btnConcert.setOnClickListener {
-
-        }
-
-        btnTheater.setOnClickListener {
-
-        }
+        val musicIcon: ImageView = findViewById(R.id.musicIcon)
+        val theaterIcon: ImageView = findViewById(R.id.theaterIcon)
+        val artIcon: ImageView = findViewById(R.id.artIcon)
+        val sportsIcon: ImageView = findViewById(R.id.sportsIcon)
     }
 
 }
