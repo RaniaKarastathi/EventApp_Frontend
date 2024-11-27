@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -37,12 +35,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Handle item selection (if you want to do something when a city is selected)
+
         citySearchBar.setOnItemClickListener { parent, view, position, id ->
             val selectedCity = parent.getItemAtPosition(position) as String
 
             // Pass the selected city to the next activity
-            val intent = Intent(this, EventsPage::class.java)
+            val intent = Intent(this, EventsActivity::class.java)
             intent.putExtra("selectedCity", selectedCity) // Pass the selected city name
             startActivity(intent)
         }
@@ -51,7 +49,34 @@ class MainActivity : AppCompatActivity() {
         val theaterIcon: ImageView = findViewById(R.id.theaterIcon)
         val artIcon: ImageView = findViewById(R.id.artIcon)
         val sportsIcon: ImageView = findViewById(R.id.sportsIcon)
+
+
+        // OnClickListener for musicIcon
+        musicIcon.setOnClickListener {
+            val intent = Intent(this, EventsActivity::class.java)
+            intent.putExtra("category", "Music")
+            startActivity(intent)
+        }
+
+        // OnClickListener for theaterIcon
+        theaterIcon.setOnClickListener {
+            val intent = Intent(this, EventsActivity::class.java)
+            intent.putExtra("category", "Theater")
+            startActivity(intent)
+        }
+
+        // OnClickListener for artIcon
+        artIcon.setOnClickListener {
+            val intent = Intent(this, EventsActivity::class.java)
+            intent.putExtra("category", "Art")
+            startActivity(intent)
+        }
+
+        // OnClickListener for sportsIcon
+        sportsIcon.setOnClickListener {
+            val intent = Intent(this, EventsActivity::class.java)
+            intent.putExtra("category", "Sports")
+            startActivity(intent)
+        }
     }
-
 }
-
