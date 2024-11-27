@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         // List of cities
         val cities = listOf(
-            "Athens", "Thessaloniki", "Patra", "Volos", "Hania",
+            "Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Βόλος", "Χανιά",
         )
 
         // Find the AutoCompleteTextView in the layout

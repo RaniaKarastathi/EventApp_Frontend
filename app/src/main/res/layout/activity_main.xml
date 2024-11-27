@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp"
-        android:text="Let's Find Events Near You"
+        android:text="Ανακάλυψε events στην πόλη σου!"
         android:textSize="17sp"
         android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
         android:id="@+id/citySearchBar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Type your city"
+        android:hint="Γράψε την πόλη που σε ενδιαφέρει..."
         android:height="48dp"
         android:inputType="text"
         android:padding="12dp"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Find A Category You Like"
+        android:text="Επέλεξε την κατηγορία που σου ταιριάζει"
         android:textSize="17sp"
         android:textStyle="bold" />
 
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Music"
+                    android:text="Μουσική"
                     android:textSize="14sp"
                     android:gravity="center" />
             </LinearLayout>
@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="Theater"
+                    android:text="Θέατρο"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -138,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Art"
+                    android:text="Τέχνη"
                     android:textSize="14sp"
                     android:gravity="center" />
             </LinearLayout>
@@ -163,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Sports"
+                    android:text="Αθλητισμός"
                     android:textSize="14sp"
                     android:gravity="center" />
             </LinearLayout>
