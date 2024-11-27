@@ -6,13 +6,22 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
+import java.lang.StringBuilder
 
+//const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //getMyData();
 
         // List of cities
         val cities = listOf(
@@ -79,4 +88,33 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+//    private fun getMyData() {
+//        val retrofitBuilder = Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl(BASE_URL)
+//            .build()
+//            .create(ApiInterface::class.java)
+//
+//        val retrofitData = retrofitBuilder.getData()
+//
+//        retrofitData.enqueue(object : Callback<List<MyDataItem>?> {
+//            override fun onResponse(
+//                call: Call<List<MyDataItem>?>,
+//                response: Response<List<MyDataItem>?>
+//            ) {
+//                val responseBody = response.body()!!
+//
+//                val myStringData = StringBuilder()
+//                for(myData in responseBody){
+//                    myStringData.append(myData.id)
+//                    myStringData.append("\n")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<MyDataItem>?>, t: Throwable) {
+//
+//            }
+//        })
+//    }
 }

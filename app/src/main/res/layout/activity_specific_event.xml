@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <!-- Event Image -->
         <ImageView
             android:id="@+id/eventImage"
@@ -87,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Descriptions"
+            android:text="Περιγραφή"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/black" />
@@ -97,9 +98,62 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Some Description"
+            android:text="Περιγραφή"
             android:textSize="14sp"
             android:textColor="@color/gray" />
 
+        <Button
+            android:id="@+id/bookButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Κλείσε Εισιτήριο"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/discoverMoreText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="Θέλεις να ανακαλύψεις και άλλα events?"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+            <!-- Back button-->
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Πίσω"
+                android:backgroundTint="@color/primaryColor"
+                android:textColor="@android:color/white" />
+
+            <!-- Home button -->
+            <Button
+                android:id="@+id/homeButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Αρχική"
+                android:backgroundTint="@color/primaryColor"
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
+        </LinearLayout>
+
+
 </ScrollView>
