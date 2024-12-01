@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Events App"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,8 +26,8 @@
         android:id="@+id/descriptionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:text="Ανακάλυψε events στην πόλη σου!"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -44,14 +44,14 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/rounded_edittext_background"
         android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="12dp" />
+        android:drawablePadding="12dp"/>
 
 
     <!-- Categories Section -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Επέλεξε την κατηγορία που σου ταιριάζει"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -169,5 +169,27 @@
             </LinearLayout>
 
         </LinearLayout>
+
     </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Τα πιο πολυαναμενόμενα Events"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/featuredEventsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="328dp"
+        android:layout_marginTop="20dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_event_card" />
 </LinearLayout>

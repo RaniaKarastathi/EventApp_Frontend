@@ -6,6 +6,8 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -87,7 +89,23 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("category", "Sports")
             startActivity(intent)
         }
+
+        val featuredEvents = listOf(
+            Event("Concert 1", "10 Dec 2024", R.drawable.event),
+            Event("Theater Play", "15 Dec 2024", R.drawable.event),
+            Event("Art Exhibition", "20 Dec 2024", R.drawable.event),
+            Event("Sports Match", "25 Dec 2024", R.drawable.event)
+        )
+
+
+        val featuredEventsRecyclerView: RecyclerView = findViewById(R.id.featuredEventsRecyclerView)
+
+        featuredEventsRecyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val adapter2 = FeaturedEventsAdapter(featuredEvents)
+        featuredEventsRecyclerView.adapter = adapter2
     }
+
 
 //    private fun getMyData() {
 //        val retrofitBuilder = Retrofit.Builder()
