@@ -1,5 +1,6 @@
 package com.example.eventapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -39,14 +40,5 @@ class EventsActivity : AppCompatActivity() {
     private fun fetchEventsByCategory(category: String) {
 
     }
-
-
-//    For intent:
-//    val intent = Intent(this, SpecificEventActivity::class.java)
-//    intent.putExtra("eventTitle", event.title)
-//    intent.putExtra("eventDescription", event.description)
-//    intent.putExtra("eventDate", event.date)
-//    intent.putExtra("eventLocation", event.location)
-//    startActivity(intent)
 
 }

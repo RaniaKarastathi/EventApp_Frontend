@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="backgroundColor">#e9ecef</color>
+    <color name="backgroundColor">#FFFFFFFF</color>
     <color  name="searchBar">#FFFFFFFF</color>
     <color name="primaryColor">#6200EE</color>
     <color name="gray">#808080</color>

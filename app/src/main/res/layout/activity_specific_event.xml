@@ -12,7 +12,7 @@
 
         <!-- Event Image -->
         <ImageView
-            android:id="@+id/eventImage"
+            android:id="@+id/eventImageView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
@@ -26,7 +26,7 @@
             android:paddingTop="8dp">
 
             <TextView
-                android:id="@+id/eventTitle"
+               android:id="@+id/eventNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="όνομα event"
@@ -34,11 +34,36 @@
                 android:textStyle="bold"
                 android:textColor="@color/black" />
 
+
             <TextView
-                android:id="@+id/eventPrice"
+                android:id="@+id/priceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$τιμή"
+                android:text="τιμή"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/availabilityTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="διαθεσιμότητα"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/ticketTypesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="είδη εισητηρίων"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/durationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="διάρκεια"
                 android:textSize="16sp"
                 android:textColor="@color/black" />
         </LinearLayout>
@@ -58,7 +83,7 @@
                 android:src="@drawable/ic_location" />
 
             <TextView
-                android:id="@+id/eventLocation"
+                android:id="@+id/venueTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -74,7 +99,7 @@
                 android:src="@drawable/ic_calendar" />
 
             <TextView
-                android:id="@+id/eventDate"
+                android:id="@+id/eventDateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -94,7 +119,7 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/eventDescription"
+            android:id="@+id/eventDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
