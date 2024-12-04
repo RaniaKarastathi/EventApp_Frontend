@@ -1,7 +1,6 @@
 package com.example.eventapp
 
 data class Event(
-    val title: String,
-    val date: String,
-    val image: Int
+    val name: String,
+    val date: String
 )

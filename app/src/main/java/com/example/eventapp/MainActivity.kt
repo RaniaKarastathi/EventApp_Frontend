@@ -2,6 +2,7 @@ package com.example.eventapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
@@ -90,12 +91,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val featuredEvents = listOf(
-            Event("Concert 1", "10 Dec 2024", R.drawable.event),
-            Event("Theater Play", "15 Dec 2024", R.drawable.event),
-            Event("Art Exhibition", "20 Dec 2024", R.drawable.event),
-            Event("Sports Match", "25 Dec 2024", R.drawable.event)
-        )
+        val featuredEvents = mutableListOf<Event>()
 
 
         val featuredEventsRecyclerView: RecyclerView = findViewById(R.id.featuredEventsRecyclerView)
@@ -104,35 +100,26 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val adapter2 = FeaturedEventsAdapter(featuredEvents)
         featuredEventsRecyclerView.adapter = adapter2
+
+
+
+        //API call
+        RetrofitInstance.api.getEvents().enqueue(object : Callback<List<Event>> {
+            override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
+                if (response.isSuccessful) {
+                    response.body()?.let { events ->
+                        featuredEvents.clear()
+                        featuredEvents.addAll(events)
+                        adapter.notifyDataSetChanged()
+                    }
+                } else {
+                    Log.e("API", "Error: ${response.code()} - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Event>>, t: Throwable) {
+                Log.e("API", "Failure: ${t.message}")
+            }
+        })
     }
-
-
-//    private fun getMyData() {
-//        val retrofitBuilder = Retrofit.Builder()
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .baseUrl(BASE_URL)
-//            .build()
-//            .create(ApiInterface::class.java)
-//
-//        val retrofitData = retrofitBuilder.getData()
-//
-//        retrofitData.enqueue(object : Callback<List<MyDataItem>?> {
-//            override fun onResponse(
-//                call: Call<List<MyDataItem>?>,
-//                response: Response<List<MyDataItem>?>
-//            ) {
-//                val responseBody = response.body()!!
-//
-//                val myStringData = StringBuilder()
-//                for(myData in responseBody){
-//                    myStringData.append(myData.id)
-//                    myStringData.append("\n")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<MyDataItem>?>, t: Throwable) {
-//
-//            }
-//        })
-//    }
 }

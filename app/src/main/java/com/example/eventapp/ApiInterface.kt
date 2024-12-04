@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 
 interface ApiInterface {
-    @GET("posts")
-   fun getData(): Call<List<Event>>
+    @GET("events")
+   fun getEvents(): Call<List<Event>>
 }

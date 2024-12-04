@@ -13,10 +13,10 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/event" />
+        />
 
     <TextView
-        android:id="@+id/eventTitle"
+        android:id="@+id/eventName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
