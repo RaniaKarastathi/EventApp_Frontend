@@ -15,6 +15,11 @@
         android:theme="@style/Theme.EventApp"
         tools:targetApi="31">
         <activity
+            android:name=".EventsActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_events2"
+            android:theme="@style/Theme.EventApp" />
+        <activity
             android:name=".SpecificEventActivity"
             android:exported="false" />
         <activity
