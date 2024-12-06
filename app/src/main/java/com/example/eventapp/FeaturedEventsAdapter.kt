@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 
 class FeaturedEventsAdapter(private val events: List<Event>,
@@ -15,7 +16,7 @@ class FeaturedEventsAdapter(private val events: List<Event>,
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.eventName)
         val dateTextView: TextView = itemView.findViewById(R.id.eventDate)
-       // val imageView: ImageView = itemView.findViewById(R.id.eventImage)
+        val eventImage: ImageView = itemView.findViewById(R.id.eventImage)
 
         init {
             itemView.setOnClickListener {
@@ -34,7 +35,9 @@ class FeaturedEventsAdapter(private val events: List<Event>,
         val event = events[position]
         holder.nameTextView.text = event.name
         holder.dateTextView.text = event.date
-       // holder.imageView.setImageResource(R.drawable.event) // Placeholder image
+        Glide.with(holder.itemView.context)
+            .load(event.imageLink)
+            .into(holder.eventImage)
     }
 
     override fun getItemCount(): Int = events.size

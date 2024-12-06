@@ -100,16 +100,28 @@ class MainActivity : AppCompatActivity() {
         val adapter2 = FeaturedEventsAdapter(featuredEvents) { event ->
             event?.let {
                 val intent = Intent(this, SpecificEventActivity::class.java).apply {
-                    putExtra("eventId", it.id)
+                    putExtra("eventType", it.eventType)
                     putExtra("name", it.name)
-                    putExtra("description", it.description)
+                    putExtra("artist", it.artist)
+                    putExtra("artist2", it.artist2)
+                    putExtra("cast", it.cast)
+                    putExtra("genre", it.genre)
+                    putExtra("imageLink", it.imageLink)
+                    putExtra("location", it.location)
+                    putExtra("customId", it.customId)
                     putExtra("date", it.date)
+                    putExtra("startTime", it.startTime)
                     putExtra("venue", it.venue)
-                    putExtra("price", it.price?.toString() ?: "Μη διαθέσιμη")
                     putExtra("availability", it.availability)
                     putExtra("ticket_types", it.ticketTypes)
-                    putExtra("duration", it.duration)
-                    Log.d("MainActivity", "Price: ${it.price}, Duration: ${it.duration}, Description: ${it.description}")
+                    putExtra("length", it.length)
+                    putExtra("eventPromo", it.eventPromo)
+                    putExtra("organizerName", it.organizerName)
+                    putExtra("ticketColot", it.ticketColor)
+                    //putExtra("price", it.price?.toString() ?: "Μη διαθέσιμη")
+
+
+
                 }
                 startActivity(intent)
             } ?: Log.e("MainActivity", "Event is null")

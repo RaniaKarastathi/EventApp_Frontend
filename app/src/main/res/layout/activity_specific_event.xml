@@ -10,41 +10,129 @@
         android:orientation="vertical">
 
 
-        <!-- Event Title and Price -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="8dp">
 
+            <ImageView
+                android:id="@+id/imageLinkImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"  >
+
+            </ImageView>
+
             <TextView
                android:id="@+id/eventNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="όνομα event"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
 
+            <!-- Location and Date -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/locationIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_location" />
+
+                    <TextView
+                        android:id="@+id/venueTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="4dp">
+
+                    <ImageView
+                        android:id="@+id/dateIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_calendar" />
+
+                    <TextView
+                        android:id="@+id/eventDateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/gray" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Επιπλέον Λεπτομέρειες"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/priceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="τιμή"
                 android:textSize="16sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/gray" />
 
             <TextView
-                android:id="@+id/availabilityTextView"
+                android:id="@+id/eventTypeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Υπάρχουν διαθέσιμα εισητήρια: "
                 android:textSize="16sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/artistTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/gray" />
 
 <!--            <TextView-->
-<!--                android:id="@+id/ticketTypesTextView"-->
+<!--                android:id="@+id/artist2TextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="είδη εισητηρίων"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textColor="@color/black" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/castTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="είδη εισητηρίων"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textColor="@color/black" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/genreTextView"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:text="είδη εισητηρίων"-->
@@ -52,67 +140,61 @@
 <!--                android:textColor="@color/black" />-->
 
             <TextView
-                android:id="@+id/durationTextView"
+                android:id="@+id/locationTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="διάρκεια"
                 android:textSize="16sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/gray" />
+
+
+            <TextView
+                android:id="@+id/startTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/gray" />
+
+
+            <TextView
+                android:id="@+id/availabilityTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/gray" />
+
+
+            <TextView
+                android:id="@+id/ticketTypesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/lenghtTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/gray" />
+
+
+
+            <TextView
+                android:id="@+id/organizerNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/ticketColorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/gray" />
         </LinearLayout>
 
-        <!-- Location and Date -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="8dp"
-            android:gravity="center_vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:id="@+id/locationIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_location" />
-
-                <TextView
-                    android:id="@+id/venueTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Location"
-                    android:textSize="14sp"
-                    android:textColor="@color/gray" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="4dp">
-
-                <ImageView
-                    android:id="@+id/dateIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_calendar" />
-
-                <TextView
-                    android:id="@+id/eventDateTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Date"
-                    android:textSize="14sp"
-                    android:textColor="@color/gray" />
-            </LinearLayout>
-        </LinearLayout>
 
 
         <!-- Description Section -->
@@ -132,7 +214,7 @@
             android:layout_marginTop="8dp"
             android:text="Περιγραφή"
             android:textSize="14sp"
-            android:textColor="@color/gray" />
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/bookButton"

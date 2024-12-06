@@ -17,16 +17,29 @@ import retrofit2.Response
 class SpecificEventActivity : AppCompatActivity() {
 
     private lateinit var name: TextView
-    private lateinit var description: TextView
+    private lateinit var eventPromo: TextView
     private lateinit var date: TextView
     private lateinit var venue: TextView
-    private lateinit var price: TextView
+    //private lateinit var price: TextView
     private lateinit var availability: TextView
-    //private lateinit var ticketTypes: TextView
-    private lateinit var duration: TextView
+    private lateinit var eventType: TextView
+    private lateinit var artist: TextView
+    //private lateinit var artist2: TextView
+    //private lateinit var cast: TextView
+    //private lateinit var genre: TextView
+    private lateinit var imageLink: ImageView
+    private lateinit var location: TextView
+    //private lateinit var customId: TextView
+    private lateinit var startTime: TextView
+    private lateinit var ticketTypes: TextView
+    private lateinit var length: TextView
+    private lateinit var organizerName: TextView
+    private lateinit var ticketColor: TextView
+    private lateinit var price: TextView
+
+
+
     private lateinit var bookButton: Button
-
-
     private lateinit var backButton: Button
     private lateinit var homeButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,13 +47,27 @@ class SpecificEventActivity : AppCompatActivity() {
         setContentView(R.layout.activity_specific_event)
 
         name = findViewById(R.id.eventNameTextView)
-        description = findViewById(R.id.eventDescriptionTextView)
+        eventPromo = findViewById(R.id.eventDescriptionTextView)
         date = findViewById(R.id.eventDateTextView)
         venue = findViewById(R.id.venueTextView)
-        price = findViewById(R.id.priceTextView)
         availability = findViewById(R.id.availabilityTextView)
-        //ticketTypes = findViewById(R.id.ticketTypesTextView)
-        duration = findViewById(R.id.durationTextView)
+        ticketTypes = findViewById(R.id.ticketTypesTextView)
+        length = findViewById(R.id.lenghtTextView)
+
+        eventType = findViewById(R.id.eventTypeTextView)
+        artist = findViewById(R.id.artistTextView)
+        //artist2 = findViewById(R.id.artist2TextView)
+        //cast = findViewById(R.id.castTextView)
+        //genre = findViewById(R.id.genreTextView)
+        imageLink = findViewById(R.id.imageLinkImageView)
+        location = findViewById(R.id.locationTextView)
+       // customId = findViewById(R.id.customIdTextView)
+
+        startTime = findViewById(R.id.startTimeTextView)
+        organizerName = findViewById(R.id.organizerNameTextView)
+        ticketColor = findViewById(R.id.ticketColorTextView)
+        price = findViewById(R.id.priceTextView)
+
 
         bookButton = findViewById(R.id.bookButton)
         backButton = findViewById(R.id.backButton)
@@ -73,14 +100,37 @@ class SpecificEventActivity : AppCompatActivity() {
     }
 
     private fun loadEventFromIntent() {
+        eventType.text = "Είδος Event: ${intent.getStringExtra("eventType") ?: "Άγνωστη"}"
         name.text = intent.getStringExtra("name") ?: "Unknown Name"
-        description.text = "Περιγραφή: ${intent.getStringExtra("description") ?: "Άγνωστη"}"
+        artist.text = "Καλλιτέχνης: ${intent.getStringExtra("artist") ?: "Άγνωστη"}"
+        //artist2.text = intent.getStringExtra("artist2") ?: "Unknown "
+        //cast.text = intent.getStringExtra("cast") ?: "Unknown "
+        //genre.text = intent.getStringExtra("genre") ?: "Unknown "
+        //
+        location.text = "Πόλη: ${intent.getStringExtra("city") ?: "Άγνωστη"}"
+        //customId.text = intent.getStringExtra("customId") ?: "Unknown "
         date.text = "Ημερομηνία: ${intent.getStringExtra("date") ?: "Άγνωστη"}"
+        startTime.text = "Ώρα Έναρξης: ${intent.getStringExtra("startTime") ?: "Άγνωστη"}"
         venue.text = "Τοποθεσία: ${intent.getStringExtra("venue") ?: "Άγνωστη"}"
-        price.text = "Τιμή: ${intent.getDoubleExtra("price", -1.0).takeIf { it != -1.0 }?.toString() ?: "Μη διαθέσιμη"}"
         availability.text = "Διαθεσιμότητα: ${intent.getStringExtra("availability") ?: "Άγνωστη"}"
-        //ticketTypes.text = "Τύποι Εισιτηρίων: ${intent.getStringExtra("ticket_types") ?: "Μη διαθέσιμο"}"
-        duration.text = "Διάρκεια: ${intent.getStringExtra("duration") ?: "Άγνωστη"}"
+        ticketTypes.text = "Τύποι Εισιτηρίων: ${intent.getStringExtra("ticket_types") ?: "Μη διαθέσιμο"}"
+        length.text = "Διάρκεια: ${intent.getStringExtra("length") ?: "Άγνωστη"}"
+        eventPromo.text = "Περιγραφή: ${intent.getStringExtra("eventPromo") ?: "Άγνωστη"}"
+        organizerName.text = "Διοργανωτής: ${intent.getStringExtra("organizerName") ?: "Άγνωστη"}"
+        //ticketColor.text = "Τοποθεσία: ${intent.getStringExtra("ticketColor") ?: "Άγνωστη"}"
+        //price.text = "Τιμή: ${intent.getDoubleExtra("price", -1.0).takeIf { it != -1.0 }?.toString() ?: "Μη διαθέσιμη"}"
+
+        val imageLinkUrl = intent.getStringExtra("imageLink")
+
+        // Φόρτωση της εικόνας
+        if (!imageLinkUrl.isNullOrEmpty()) {
+            Glide.with(this)
+                .load(imageLinkUrl)
+                .placeholder(R.drawable.placeholder) // Εδώ μπορείς να βάλεις μια placeholder εικόνα
+                .into(imageLink) // Εδώ εμφανίζεται η εικόνα
+        } else {
+            imageLink.setImageResource(R.drawable.placeholder) // Εναλλακτική εικόνα αν δεν υπάρχει διεύθυνση
+        }
     }
 
     private fun fetchEventDetails(eventId: String) {
@@ -102,14 +152,36 @@ class SpecificEventActivity : AppCompatActivity() {
     }
 
     private fun populateEventDetails(event: Event) {
+        eventType.text = "Είδος Event: ${event.eventType ?: "Άγνωστη"}"
         name.text = event.name
-        description.text = "Περιγραφή: ${event.description ?: "Άγνωστη"}"
+        artist.text = "Καλλιτέχνης: ${event.artist ?: "Άγνωστη"}"
+        //artist2.text = "Περιγραφή: ${event.artist2 ?: "Άγνωστη"}"
+        //cast.text = "Περιγραφή: ${event.cast ?: "Άγνωστη"}"
+        //genre.text = "Περιγραφή: ${event.genre ?: "Άγνωστη"}"
+        location.text = "Πόλη: ${event.location ?: "Άγνωστη"}"
+        //customId.text = "Περιγραφή: ${event.customId ?: "Άγνωστη"}"
         date.text = "Ημερομηνία: ${event.date ?: "Άγνωστη"}"
+        startTime.text = "Ώρα Έναρξης: ${event.startTime ?: "Άγνωστη"}"
         venue.text = "Τοποθεσία: ${event.venue ?: "Άγνωστη"}"
-        price.text = "Τιμή: ${event.price?.toString() ?: "Μη διαθέσιμη"}"
         availability.text = "Διαθεσιμότητα: ${event.availability ?: "Άγνωστη"}"
-       // ticketTypes.text = "Τύποι Εισιτηρίων: ${event.ticketTypes ?: "Μη διαθέσιμο"}"
-        duration.text = "Διάρκεια: ${event.duration ?: "Άγνωστη"}"
+        ticketTypes.text = "Τύποι Εισιτηρίων: ${event.ticketTypes ?: "Μη διαθέσιμο"}"
+        length.text = "Διάρκεια: ${event.length ?: "Άγνωστη"}"
+        eventPromo.text = "Περιγραφή: ${event.eventPromo ?: "Άγνωστη"}"
+        organizerName.text = "Διάρκεια: ${event.organizerName ?: "Άγνωστη"}"
+        //ticketColor.text = "Περιγραφή: ${event.ticketColor ?: "Άγνωστη"}"
+
+        // Φόρτωση της εικόνας
+        Glide.with(this)
+            .load(event.imageLink)
+            .placeholder(R.drawable.placeholder)
+            .into(imageLink)
+
+        // Εμφάνιση τιμών εισιτηρίων
+        val ticketDetails = event.tickets.joinToString("\n") {
+            "Τύπος: ${it.ticketName ?: "Άγνωστος"}, Τιμή: ${it.price}€"
+        }
+        ticketTypes.text = "Τύποι Εισιτηρίων:\n$ticketDetails"
+
     }
 
     private fun bookTicket(eventTitle: String) {
