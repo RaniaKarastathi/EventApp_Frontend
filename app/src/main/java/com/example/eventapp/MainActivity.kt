@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import java.lang.StringBuilder
 
-//const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
 class MainActivity : AppCompatActivity() {
 
@@ -91,27 +91,39 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // RecyclerView
         val featuredEvents = mutableListOf<Event>()
-
-
         val featuredEventsRecyclerView: RecyclerView = findViewById(R.id.featuredEventsRecyclerView)
-
         featuredEventsRecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val adapter2 = FeaturedEventsAdapter(featuredEvents)
+
+        val adapter2 = FeaturedEventsAdapter(featuredEvents) { event ->
+            event?.let {
+                val intent = Intent(this, SpecificEventActivity::class.java).apply {
+                    putExtra("eventId", it.id)
+                    putExtra("name", it.name)
+                    putExtra("description", it.description)
+                    putExtra("date", it.date)
+                    putExtra("venue", it.venue)
+                    putExtra("price", it.price?.toString() ?: "Μη διαθέσιμη")
+                    putExtra("availability", it.availability)
+                    putExtra("ticket_types", it.ticketTypes)
+                    putExtra("duration", it.duration)
+                    Log.d("MainActivity", "Price: ${it.price}, Duration: ${it.duration}, Description: ${it.description}")
+                }
+                startActivity(intent)
+            } ?: Log.e("MainActivity", "Event is null")
+        }
         featuredEventsRecyclerView.adapter = adapter2
 
-
-
-        //API call
         RetrofitInstance.api.getEvents().enqueue(object : Callback<List<Event>> {
             override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
                 if (response.isSuccessful) {
                     response.body()?.let { events ->
                         featuredEvents.clear()
                         featuredEvents.addAll(events)
-                        adapter.notifyDataSetChanged()
-                    }
+                        adapter2.notifyDataSetChanged()
+                    } ?: Log.e("API", "Response body is null")
                 } else {
                     Log.e("API", "Error: ${response.code()} - ${response.message()}")
                 }
@@ -119,6 +131,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<List<Event>>, t: Throwable) {
                 Log.e("API", "Failure: ${t.message}")
+                Toast.makeText(this@MainActivity, "Αποτυχία φόρτωσης εκδηλώσεων", Toast.LENGTH_SHORT).show()
             }
         })
     }

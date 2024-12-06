@@ -5,9 +5,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    private const val BASE_URL = "https://my-api.com/"
+    private const val BASE_URL = "https://eventapp-backend-ycrb.onrender.com/"
 
-    // Το Singleton instance του Retrofit
+
     val api: ApiInterface by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)

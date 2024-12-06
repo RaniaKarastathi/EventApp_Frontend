@@ -6,13 +6,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FeaturedEventsAdapter(private val events: List<Event>) :
-    RecyclerView.Adapter<FeaturedEventsAdapter.EventViewHolder>() {
+
+class FeaturedEventsAdapter(private val events: List<Event>,
+                            private val onEventClick: (Event) -> Unit // Λειτουργία για click event
+) : RecyclerView.Adapter<FeaturedEventsAdapter.EventViewHolder>() {
+
 
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.eventName)
         val dateTextView: TextView = itemView.findViewById(R.id.eventDate)
-        val imageView: ImageView = itemView.findViewById(R.id.eventImage)
+       // val imageView: ImageView = itemView.findViewById(R.id.eventImage)
+
+        init {
+            itemView.setOnClickListener {
+                onEventClick(events[adapterPosition]) // Κλήση της λειτουργίας για το event που πατήθηκε
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -25,7 +34,7 @@ class FeaturedEventsAdapter(private val events: List<Event>) :
         val event = events[position]
         holder.nameTextView.text = event.name
         holder.dateTextView.text = event.date
-        holder.imageView.setImageResource(R.drawable.event) // Placeholder image
+       // holder.imageView.setImageResource(R.drawable.event) // Placeholder image
     }
 
     override fun getItemCount(): Int = events.size
