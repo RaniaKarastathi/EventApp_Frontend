@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil.load
 
 
 class FeaturedEventsAdapter(private val events: List<Event>,
@@ -35,9 +35,11 @@ class FeaturedEventsAdapter(private val events: List<Event>,
         val event = events[position]
         holder.nameTextView.text = event.name
         holder.dateTextView.text = event.date
-        Glide.with(holder.itemView.context)
-            .load(event.imageLink)
-            .into(holder.eventImage)
+        // Φόρτωση της εικόνας με Coil
+        holder.eventImage.load(event.imageLink) {
+            placeholder(R.drawable.placeholder) // Εικόνα placeholder κατά τη φόρτωση
+            error(R.drawable.placeholder) // Εναλλακτική εικόνα σε περίπτωση αποτυχίας φόρτωσης
+        }
     }
 
     override fun getItemCount(): Int = events.size

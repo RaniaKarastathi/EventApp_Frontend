@@ -13,10 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
-import java.lang.StringBuilder
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,11 +20,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //getMyData();
 
         // List of cities
         val cities = listOf(
-            "Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Βόλος", "Χανιά",
+            "ΑθΗΝΑ", "ΘΕΣΣΑΛΟΝΙΚΗ", "ΠΑΤΡΑ", "ΒΟΛΟΣ", "ΧΑΝΙΑ",
         )
 
         // Find the AutoCompleteTextView in the layout
@@ -49,13 +44,34 @@ class MainActivity : AppCompatActivity() {
 
 
         citySearchBar.setOnItemClickListener { parent, view, position, id ->
+            // Get the selected city from the AutoCompleteTextView
             val selectedCity = parent.getItemAtPosition(position) as String
+            Log.d("MainActivity", "City selected: $selectedCity") // Debugging line
 
-            // Pass the selected city to the next activity
+            // Create an Intent to start EventsActivity
             val intent = Intent(this, EventsActivity::class.java)
-            intent.putExtra("selectedCity", selectedCity) // Pass the selected city name
+
+            // Use 'selectedCity' from the clicked item to determine which city was selected
+            when (selectedCity) {
+                "ΑΘΗΝΑ" -> intent.putExtra("selectedCity", "athens")
+                "ΘΕΣΣΑΛΟΝΙΚΗ" -> intent.putExtra("selectedCity", "thessaloniki")
+                "ΠΑΤΡΑ" -> intent.putExtra("selectedCity", "patra")
+                "ΒΟΛΟΣ" -> intent.putExtra("selectedCity", "volos")
+                "ΧΑΝΙΑ" -> intent.putExtra("selectedCity", "chania")
+                else -> {
+                    Toast.makeText(this, "Unknown city selected!", Toast.LENGTH_SHORT).show()
+                    return@setOnItemClickListener // Exit the listener if an unknown city is selected
+                }
+            }
+
+            // Debugging line to log the intent extra value
+            Log.d("MainActivity", "Intent starting for city: ${intent.getStringExtra("selectedCity")}")
+
+            // Start EventsActivity
             startActivity(intent)
         }
+
+
 
         val musicIcon: ImageView = findViewById(R.id.musicIcon)
         val theaterIcon: ImageView = findViewById(R.id.theaterIcon)
@@ -66,28 +82,28 @@ class MainActivity : AppCompatActivity() {
         // OnClickListener for musicIcon
         musicIcon.setOnClickListener {
             val intent = Intent(this, EventsActivity::class.java)
-            intent.putExtra("category", "Music")
+            intent.putExtra("category", "music")
             startActivity(intent)
         }
 
         // OnClickListener for theaterIcon
         theaterIcon.setOnClickListener {
             val intent = Intent(this, EventsActivity::class.java)
-            intent.putExtra("category", "Theater")
+            intent.putExtra("category", "theater")
             startActivity(intent)
         }
 
         // OnClickListener for artIcon
         artIcon.setOnClickListener {
             val intent = Intent(this, EventsActivity::class.java)
-            intent.putExtra("category", "Art")
+            intent.putExtra("category", "artgallery")
             startActivity(intent)
         }
 
         // OnClickListener for sportsIcon
         sportsIcon.setOnClickListener {
             val intent = Intent(this, EventsActivity::class.java)
-            intent.putExtra("category", "Sports")
+            intent.putExtra("category", "football")
             startActivity(intent)
         }
 
@@ -118,13 +134,10 @@ class MainActivity : AppCompatActivity() {
                     putExtra("eventPromo", it.eventPromo)
                     putExtra("organizerName", it.organizerName)
                     putExtra("ticketColot", it.ticketColor)
-                    //putExtra("price", it.price?.toString() ?: "Μη διαθέσιμη")
-
-
-
+                    //putExtra("price", it.price?.toString() ?: "Μη διαθέσιμη"
                 }
                 startActivity(intent)
-            } ?: Log.e("MainActivity", "Event is null")
+            }
         }
         featuredEventsRecyclerView.adapter = adapter2
 

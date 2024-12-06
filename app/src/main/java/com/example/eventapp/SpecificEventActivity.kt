@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import com.bumptech.glide.Glide
+import coil.load
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,7 +40,6 @@ class SpecificEventActivity : AppCompatActivity() {
 
 
     private lateinit var bookButton: Button
-    private lateinit var backButton: Button
     private lateinit var homeButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +69,6 @@ class SpecificEventActivity : AppCompatActivity() {
 
 
         bookButton = findViewById(R.id.bookButton)
-        backButton = findViewById(R.id.backButton)
         homeButton = findViewById(R.id.homeButton)
 
         val eventId = intent.getStringExtra("eventId")
@@ -85,10 +83,6 @@ class SpecificEventActivity : AppCompatActivity() {
             bookTicket(eventName)
         }
 
-        // OnClick for backButton
-        backButton.setOnClickListener {
-            finish()
-        }
 
         // Onclick for HomeButton
         homeButton.setOnClickListener {
@@ -124,13 +118,14 @@ class SpecificEventActivity : AppCompatActivity() {
 
         // Φόρτωση της εικόνας
         if (!imageLinkUrl.isNullOrEmpty()) {
-            Glide.with(this)
-                .load(imageLinkUrl)
-                .placeholder(R.drawable.placeholder) // Εδώ μπορείς να βάλεις μια placeholder εικόνα
-                .into(imageLink) // Εδώ εμφανίζεται η εικόνα
+            imageLink.load(imageLinkUrl) {
+                placeholder(R.drawable.placeholder) // Placeholder εικόνα κατά τη φόρτωση
+                error(R.drawable.placeholder) // Εναλλακτική εικόνα αν η φόρτωση αποτύχει
+            }
         } else {
             imageLink.setImageResource(R.drawable.placeholder) // Εναλλακτική εικόνα αν δεν υπάρχει διεύθυνση
         }
+
     }
 
     private fun fetchEventDetails(eventId: String) {
@@ -170,11 +165,11 @@ class SpecificEventActivity : AppCompatActivity() {
         organizerName.text = "Διάρκεια: ${event.organizerName ?: "Άγνωστη"}"
         //ticketColor.text = "Περιγραφή: ${event.ticketColor ?: "Άγνωστη"}"
 
-        // Φόρτωση της εικόνας
-        Glide.with(this)
-            .load(event.imageLink)
-            .placeholder(R.drawable.placeholder)
-            .into(imageLink)
+        // Φόρτωση της εικόνας με Coil
+        imageLink.load(event.imageLink) {
+            placeholder(R.drawable.placeholder) // Εικόνα placeholder κατά τη φόρτωση
+            error(R.drawable.placeholder) // Εναλλακτική εικόνα σε περίπτωση αποτυχίας φόρτωσης
+        }
 
         // Εμφάνιση τιμών εισιτηρίων
         val ticketDetails = event.tickets.joinToString("\n") {
