@@ -99,16 +99,16 @@ class SpecificEventActivity : AppCompatActivity() {
 
     private fun loadEventFromIntent() {
         eventType.text = "Είδος Event: ${intent.getStringExtra("eventType") ?: "Άγνωστη"}"
-        name.text = intent.getStringExtra("name") ?: "Unknown Name"
+        name.text = intent.getStringExtra("eventName") ?: "Unknown Name"
         artist.text = "Καλλιτέχνης: ${intent.getStringExtra("artist") ?: "Άγνωστη"}"
         val artist2Value = intent.getStringExtra("artist2")?.trim() ?: ""
-        artist2.text = artist2Value
+        artist2.text = "Καλλιτέχνης: $artist2Value"
         artist2.visibility = if (artist2Value.isEmpty()) View.GONE else View.VISIBLE
         val castValue = intent.getStringExtra("cast")?.trim() ?: ""
-        cast.text = castValue
+        cast.text = "Cast: $castValue"
         cast.visibility = if (castValue.isEmpty()) View.GONE else View.VISIBLE
         val genreValue = intent.getStringExtra("genre")?.trim() ?: ""
-        genre.text = genreValue
+        genre.text = "Κατηγορία: $genreValue"
         genre.visibility = if (genreValue.isEmpty()) View.GONE else View.VISIBLE
         val locationValue = intent.getStringExtra("city")?.trim() ?: ""
         location.text = "Πόλη: $locationValue"

@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:textSize="16sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/gray" />
 
             <TextView
                 android:id="@+id/castTextView"
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:visibility="gone"
-                android:textColor="@color/black" />
+                android:textColor="@color/gray" />
 
             <TextView
                 android:id="@+id/genreTextView"
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:visibility="gone"
-                android:textColor="@color/black" />
+                android:textColor="@color/gray" />
 
             <TextView
                 android:id="@+id/locationTextView"
