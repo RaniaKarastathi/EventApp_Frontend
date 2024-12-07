@@ -19,6 +19,7 @@ class EventsAdapter(private var events: List<Event>) :
         val eventImage: ImageView = itemView.findViewById(R.id.eventImage)
         val eventName: TextView = itemView.findViewById(R.id.eventName)
         val eventDate: TextView = itemView.findViewById(R.id.eventDate)
+        val eventLocation: TextView = itemView.findViewById(R.id.eventLocation)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -31,7 +32,8 @@ class EventsAdapter(private var events: List<Event>) :
 
         // Ορισμός δεδομένων
         holder.eventName.text = event.name
-        holder.eventDate.text = "Ημερομηνία: ${event.date}"
+        holder.eventDate.text = event.date
+        holder.eventLocation.text = event.location
 
         // Χρήση Coil για φόρτωση της εικόνας
         if (!event.imageLink.isNullOrEmpty()) {

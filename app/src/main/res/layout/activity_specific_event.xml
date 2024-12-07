@@ -16,22 +16,31 @@
             android:orientation="vertical"
             android:paddingTop="8dp">
 
-            <ImageView
-                android:id="@+id/imageLinkImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"  >
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:gravity="center">
+               <ImageView
+                   android:id="@+id/imageLinkImageView"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:adjustViewBounds="true"
+                   android:scaleType="centerCrop"  >
 
-            </ImageView>
+               </ImageView>
 
-            <TextView
-               android:id="@+id/eventNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+               <TextView
+                   android:id="@+id/eventNameTextView"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:textSize="20sp"
+                   android:textColor="@color/black"
+                   android:textStyle="bold"/>
+
+           </LinearLayout>
+
 
             <!-- Location and Date -->
             <LinearLayout
@@ -45,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center">
 
                     <ImageView
                         android:id="@+id/locationIcon"
@@ -66,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:layout_marginTop="4dp">
 
                     <ImageView
@@ -85,28 +94,30 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- Διαχωριστική Γραμμή -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="15dp"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:text="Επιπλέον Λεπτομέρειες"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/priceTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/gray" />
 
             <TextView
                 android:id="@+id/eventTypeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:textColor="@color/gray" />
+                android:textColor="@color/gray"
+                android:layout_marginTop="18dp"/>
 
             <TextView
                 android:id="@+id/artistTextView"
@@ -115,35 +126,36 @@
                 android:textSize="16sp"
                 android:textColor="@color/gray" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/artist2TextView"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="είδη εισητηρίων"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textColor="@color/black" />-->
+            <TextView
+                android:id="@+id/artist2TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/castTextView"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="είδη εισητηρίων"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textColor="@color/black" />-->
+            <TextView
+                android:id="@+id/castTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:textColor="@color/black" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/genreTextView"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="είδη εισητηρίων"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textColor="@color/black" />-->
+            <TextView
+                android:id="@+id/genreTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/locationTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:visibility="gone"
                 android:textColor="@color/gray" />
 
 
@@ -160,6 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:visibility="gone"
                 android:textColor="@color/gray" />
 
 
@@ -191,7 +204,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:visibility="gone"
                 android:textColor="@color/gray" />
+
+
+            <!-- Διαχωριστική Γραμμή -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Είδη Εισητηρίων"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+
+            <LinearLayout
+                android:id="@+id/ticketsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <!-- Διαχωριστική Γραμμή -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="15dp"/>
+
+
         </LinearLayout>
 
 
@@ -212,9 +259,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Περιγραφή"
             android:textSize="14sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textAlignment="textStart"/>
 
         <Button
             android:id="@+id/bookButton"
@@ -222,7 +269,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Κλείσε Εισιτήριο"
-            android:backgroundTint="@color/primaryColor"
+            android:backgroundTint="@color/gray"
             android:textColor="@android:color/white" />
 
         <TextView
@@ -253,7 +300,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:text="Αρχική"
-                android:backgroundTint="@color/primaryColor"
+                android:backgroundTint="@color/gray"
                 android:textColor="@android:color/white" />
         </LinearLayout>
 

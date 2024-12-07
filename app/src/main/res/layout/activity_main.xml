@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Events App"
+        android:text="Pou-Pass"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,14 +38,18 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="Γράψε την πόλη που σε ενδιαφέρει..."
-        android:height="48dp"
         android:inputType="text"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:padding="12dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/rounded_edittext_background"
         android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="12dp"
-        />
+        android:drawablePadding="8dp"
+        android:textSize="15sp"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
 
 
     <!-- Categories Section -->
@@ -61,117 +65,100 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- Category Icon 1 -->
-            <LinearLayout
-                android:layout_width="80dp"
+            <Button
+                android:id="@+id/standupcomedyIcon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/gray2"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Stand-up comedy"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-                <ImageView
-                    android:id="@+id/musicIcon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_music"
-                    android:background="@drawable/btn_background"
-                    android:padding="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Μουσική"
-                    android:textSize="14sp"
-                    android:gravity="center" />
-            </LinearLayout>
-
-            <!-- Category Icon 2 -->
-            <LinearLayout
-                android:layout_width="80dp"
+            <Button
+                android:id="@+id/musicIcon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/gray2"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Μουσική"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-                <ImageView
-                    android:id="@+id/theaterIcon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_theater"
-                    android:background="@drawable/btn_background"
-                    android:padding="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="Θέατρο"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-
-            <!-- Category Icon 3 -->
-            <LinearLayout
-                android:layout_width="80dp"
+            <Button
+                android:id="@+id/theaterIcon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Θέατρο"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/gray2" />
 
-                <ImageView
-                    android:id="@+id/artIcon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_art"
-                    android:background="@drawable/btn_background"
-                    android:padding="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Τέχνη"
-                    android:textSize="14sp"
-                    android:gravity="center" />
-            </LinearLayout>
-
-            <!-- Category Icon 4 -->
-            <LinearLayout
-                android:layout_width="80dp"
+            <Button
+                android:id="@+id/artIcon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Τέχνη"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/gray2" />
 
-                <ImageView
-                    android:id="@+id/sportsIcon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_sports"
-                    android:background="@drawable/btn_background"
-                    android:padding="10dp" />
+            <Button
+                android:id="@+id/footballIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Ποδόσφαιρο"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/gray2" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Αθλητισμός"
-                    android:textSize="14sp"
-                    android:gravity="center" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/basketballIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Μπάσκετ"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/gray2" />
 
+            <Button
+                android:id="@+id/volleyballIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Βόλεϊ"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/gray2" />
         </LinearLayout>
-
     </HorizontalScrollView>
+
 
     <TextView
         android:layout_width="wrap_content"

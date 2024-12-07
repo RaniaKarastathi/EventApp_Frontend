@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+<!--    android:background="@drawable/ticket_background"-->
+
+
+    <TextView
+        android:id="@+id/ticketNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Όνομα Εισιτηρίου" />
+
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Τιμή" />
+
+    <TextView
+        android:id="@+id/quantityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ποσότητα" />
+
+    <TextView
+        android:id="@+id/remainingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Υπόλοιπα" />
+
+
+</LinearLayout>

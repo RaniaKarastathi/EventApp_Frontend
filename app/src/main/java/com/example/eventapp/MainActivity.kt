@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -73,10 +74,20 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val musicIcon: ImageView = findViewById(R.id.musicIcon)
-        val theaterIcon: ImageView = findViewById(R.id.theaterIcon)
-        val artIcon: ImageView = findViewById(R.id.artIcon)
-        val sportsIcon: ImageView = findViewById(R.id.sportsIcon)
+        val standupcomedyIcon: Button = findViewById(R.id.standupcomedyIcon)
+        val musicIcon: Button = findViewById(R.id.musicIcon)
+        val theaterIcon: Button = findViewById(R.id.theaterIcon)
+        val artIcon: Button = findViewById(R.id.artIcon)
+        val footballIcon: Button = findViewById(R.id.footballIcon)
+        val basketballIcon: Button = findViewById(R.id.basketballIcon)
+        val volleyballIcon: Button = findViewById(R.id.volleyballIcon)
+
+        // OnClickListener for standupcomedyIcon
+        standupcomedyIcon.setOnClickListener {
+            val intent = Intent(this, EventsActivity::class.java)
+            intent.putExtra("category", "standupcomedy")
+            startActivity(intent)
+        }
 
 
         // OnClickListener for musicIcon
@@ -100,10 +111,24 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // OnClickListener for sportsIcon
-        sportsIcon.setOnClickListener {
+        // OnClickListener for footballIcon
+        footballIcon.setOnClickListener {
             val intent = Intent(this, EventsActivity::class.java)
             intent.putExtra("category", "football")
+            startActivity(intent)
+        }
+
+        // OnClickListener for basketballIcon
+        basketballIcon.setOnClickListener {
+            val intent = Intent(this, EventsActivity::class.java)
+            intent.putExtra("category", "basketball")
+            startActivity(intent)
+        }
+
+        // OnClickListener for volleyballIcon
+        volleyballIcon.setOnClickListener {
+            val intent = Intent(this, EventsActivity::class.java)
+            intent.putExtra("category", "volleyball")
             startActivity(intent)
         }
 
@@ -115,27 +140,27 @@ class MainActivity : AppCompatActivity() {
 
         val adapter2 = FeaturedEventsAdapter(featuredEvents) { event ->
             event?.let {
-                val intent = Intent(this, SpecificEventActivity::class.java).apply {
-                    putExtra("eventType", it.eventType)
-                    putExtra("name", it.name)
-                    putExtra("artist", it.artist)
-                    putExtra("artist2", it.artist2)
-                    putExtra("cast", it.cast)
-                    putExtra("genre", it.genre)
-                    putExtra("imageLink", it.imageLink)
-                    putExtra("location", it.location)
-                    putExtra("customId", it.customId)
-                    putExtra("date", it.date)
-                    putExtra("startTime", it.startTime)
-                    putExtra("venue", it.venue)
-                    putExtra("availability", it.availability)
-                    putExtra("ticket_types", it.ticketTypes)
-                    putExtra("length", it.length)
-                    putExtra("eventPromo", it.eventPromo)
-                    putExtra("organizerName", it.organizerName)
-                    putExtra("ticketColot", it.ticketColor)
-                    //putExtra("price", it.price?.toString() ?: "Μη διαθέσιμη"
-                }
+                val intent = Intent(this, SpecificEventActivity::class.java)
+                intent.putExtra("eventType", event.eventType)
+                intent.putExtra("customId", event.customId)
+                intent.putExtra("eventName", event.name)
+                intent.putExtra("eventDate", event.date)
+                intent.putExtra("artist", event.artist)
+                intent.putExtra("artist2", event.artist2)
+                intent.putExtra("cast", event.cast)
+                intent.putExtra("genre", event.genre)
+                intent.putExtra("imageLink", event.imageLink)
+                intent.putExtra("location", event.location)
+                intent.putExtra("startTime", event.startTime)
+                intent.putExtra("venue", event.venue)
+                intent.putExtra("availability", event.availability)
+                intent.putExtra("ticket_types", event.ticketTypes)
+                intent.putExtra("length", event.length)
+                intent.putExtra("eventPromo", event.eventPromo)
+                intent.putExtra("organizerName", event.organizerName)
+                intent.putExtra("ticketColor", event.ticketColor)
+                val tickets: ArrayList<Ticket> = ArrayList(event.tickets ?: emptyList())
+                intent.putExtra("tickets", tickets)
                 startActivity(intent)
             }
         }

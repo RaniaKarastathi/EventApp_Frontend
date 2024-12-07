@@ -1,5 +1,7 @@
 package com.example.eventapp
 
+import java.io.Serializable
+
 data class Event(
     val eventType: String,
     val name: String,
@@ -20,13 +22,13 @@ data class Event(
     val organizerName: String,
     val ticketColor: String,
     val tickets: List<Ticket>
-
-)
+): Serializable
 
 data class Ticket(
-    val ticketType: Int? = 0,
-    val ticketName: String? = null,
+    val ticketType: Number,
+    val ticketName: String,
     val price: Double,
-    val quantity: Int,
-    val remaining: Int
-)
+    val quantity: Number,
+    val remaining: Number
+): Serializable
+
