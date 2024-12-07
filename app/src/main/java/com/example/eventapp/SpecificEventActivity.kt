@@ -1,6 +1,8 @@
 package com.example.eventapp
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -62,7 +64,6 @@ class SpecificEventActivity : AppCompatActivity() {
         location = findViewById(R.id.locationTextView)
         startTime = findViewById(R.id.startTimeTextView)
         organizerName = findViewById(R.id.organizerNameTextView)
-        ticketColor = findViewById(R.id.ticketColorTextView)
         ticketsContainer = findViewById(R.id.ticketsContainer)
 
 
@@ -113,7 +114,7 @@ class SpecificEventActivity : AppCompatActivity() {
         val locationValue = intent.getStringExtra("city")?.trim() ?: ""
         location.text = "Πόλη: $locationValue"
         location.visibility = if (locationValue.isEmpty()) View.GONE else View.VISIBLE
-        date.text = "Ημερομηνία: ${intent.getStringExtra("date") ?: "Άγνωστη"}"
+        date.text = "Ημερομηνία: ${intent.getStringExtra("eventDate") ?: "Άγνωστη"}"
         startTime.text = "Ώρα Έναρξης: ${intent.getStringExtra("startTime") ?: "Άγνωστη"}"
         venue.text = "Τοποθεσία: ${intent.getStringExtra("venue") ?: "Άγνωστη"}"
         val availabilityValue = intent.getStringExtra("availability")?.trim() ?: ""
@@ -124,8 +125,38 @@ class SpecificEventActivity : AppCompatActivity() {
         eventPromo.text = intent.getStringExtra("eventPromo") ?: "Unknown Name"
         organizerName.text = "Διοργανωτής: ${intent.getStringExtra("organizerName") ?: "Άγνωστη"}"
         val ticketColorValue = intent.getStringExtra("ticketColor")?.trim() ?: ""
-        ticketColor.text = "Χρώμα Εισιτηρίου: $ticketColorValue"
-        ticketColor.visibility = if (ticketColorValue.isEmpty()) View.GONE else View.VISIBLE
+
+
+        // Βρείτε το TextView για τη φράση
+        val availableTicketsTextView = findViewById<TextView>(R.id.availableTicketsTextView)
+
+        when {
+            ticketColorValue.equals("green", ignoreCase = true) -> {
+                availableTicketsTextView.text = "Υπάρχουν αρκετά διαθέσιμα εισιτήρια"
+                availableTicketsTextView.setTextColor(Color.parseColor("#006400"))
+                availableTicketsTextView.setTypeface(null, Typeface.BOLD)// Πράσινο χρώμα
+            }
+            ticketColorValue.equals("orange", ignoreCase = true) -> {
+                availableTicketsTextView.text = "Τα εισητήρια έχουν σχεδόν εξαντληθεί"
+                availableTicketsTextView.setTextColor(Color.parseColor("#FFA500"))
+                availableTicketsTextView.setTypeface(null, Typeface.BOLD)// Πορτοκαλί χρώμα
+            }
+            ticketColorValue.equals("red", ignoreCase = true) -> {
+                availableTicketsTextView.text = "Sold Out"
+                availableTicketsTextView.setTextColor(Color.RED)
+                availableTicketsTextView.setTypeface(null, Typeface.BOLD)// Κόκκινο χρώμα
+            }
+            ticketColorValue.equals("yellow", ignoreCase = true) -> {
+                availableTicketsTextView.text = "Υπάρχουν διαθέσιμα εισιτήρια"
+                availableTicketsTextView.setTextColor(Color.YELLOW)
+                availableTicketsTextView.setTypeface(null, Typeface.BOLD)// Κίτρινο χρώμα
+            }
+            else -> {
+                availableTicketsTextView.text = "Υπάρχουν αρκετά διαθέσιμα εισιτήρια"
+                availableTicketsTextView.setTextColor(Color.BLACK) // Επιστροφή στο κανονικό χρώμα
+            }
+        }
+
 
         val imageLinkUrl = intent.getStringExtra("imageLink")
 
