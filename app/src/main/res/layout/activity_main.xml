@@ -14,9 +14,9 @@
         android:id="@+id/appNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="Pou-Pass"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         android:id="@+id/descriptionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:text="Ανακάλυψε events στην πόλη σου!"
         android:textSize="17sp"
@@ -56,7 +56,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:text="Επέλεξε την κατηγορία που σου ταιριάζει"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -65,7 +65,7 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:fillViewport="true">
 
         <LinearLayout
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/gray2"
+                android:backgroundTint="@color/maincolor"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="Stand-up comedy"
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/gray2"
+                android:backgroundTint="@color/maincolor"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="Μουσική"
@@ -107,19 +107,19 @@
                 android:text="Θέατρο"
                 android:textSize="14sp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/gray2" />
+                android:backgroundTint="@color/maincolor" />
 
             <Button
                 android:id="@+id/artIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/maincolor"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="Τέχνη"
-                android:textSize="14sp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/gray2" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/footballIcon"
@@ -131,7 +131,7 @@
                 android:text="Ποδόσφαιρο"
                 android:textSize="14sp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/gray2" />
+                android:backgroundTint="@color/maincolor" />
 
             <Button
                 android:id="@+id/basketballIcon"
@@ -143,7 +143,7 @@
                 android:text="Μπάσκετ"
                 android:textSize="14sp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/gray2" />
+                android:backgroundTint="@color/maincolor" />
 
             <Button
                 android:id="@+id/volleyballIcon"
@@ -155,7 +155,7 @@
                 android:text="Βόλεϊ"
                 android:textSize="14sp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/gray2" />
+                android:backgroundTint="@color/maincolor" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -163,7 +163,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Τα πιο πολυαναμενόμενα Events"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -172,7 +172,7 @@
         android:id="@+id/featuredEventsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="328dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:clipToPadding="false"
         android:orientation="horizontal"
         android:paddingStart="8dp"
